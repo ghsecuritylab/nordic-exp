@@ -1,6 +1,6 @@
 <!DOCTYPE CrossStudio_Project_File>
-<solution Name="pwm_driver_pca10040" target="8" version="2">
-  <project Name="pwm_driver_pca10040">
+<solution Name="nordic-exp" target="8" version="2">
+  <project Name="nordic-exp">
     <configuration
       Name="Common"
       arm_architecture="v7EM"
