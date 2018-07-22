@@ -94,6 +94,11 @@
     <folder Name="Application">
       <file file_name="./sdk_config.h" />
       <file file_name="./main.cpp" />
+      <file file_name="robot.cpp" />
+      <file file_name="motor_controller.cpp" />
+      <file file_name="dc_motor.cpp" />
+      <file file_name="motor.cpp" />
+      <file file_name="servo_motor.cpp" />
     </folder>
     <folder Name="nRF_Segger_RTT">
       <file file_name="./external/segger_rtt/SEGGER_RTT.c" />
