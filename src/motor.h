@@ -3,21 +3,22 @@
 
 #include <stdint.h>
 
-enum Direction {
-  FORWARD,
-  BACKWARDS,
-  NEUTRAL
+enum {
+	FORWARD,
+	BACKWARDS,
+	NEUTRAL
 };
 
 class Motor {
-  private:
-	uint8_t direction;
+	private:
+		bool enabled;
 
-  public:
-	Motor();
-	Motor(uint8_t dir);
-	virtual void setDirection(uint8_t dir);
-    virtual void setSpeed(uint8_t speed) = 0;
+	public:
+		Motor();
+		void enable();
+		void disable();
+		virtual void setSpeed(uint8_t speed) = 0;
+		virtual void setDirection(uint8_t direction) = 0;
 };
 
 #endif

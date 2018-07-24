@@ -1,13 +1,13 @@
 #include "motor.h"
 
 Motor::Motor() {
-  direction = NEUTRAL;
+  enabled = false;
 }
 
-Motor::Motor(uint8_t dir) {
-  direction = dir;
+void Motor::enable() {
+  enabled = true;
 }
 
-void Motor::setDirection(uint8_t dir) {
-  direction = dir;
+void Motor::disable() {
+  enabled = false;
 }
