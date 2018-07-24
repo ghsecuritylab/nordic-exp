@@ -7,7 +7,8 @@
 
 class PWM {
 private:
-	nrf_drv_pwm_config_t const config;
+	nrf_drv_pwm_t m_pwm0 = NRF_DRV_PWM_INSTANCE(0);
+	nrf_drv_pwm_config_t config;
 
 public:
 	PWM();

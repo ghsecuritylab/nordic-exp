@@ -4,6 +4,7 @@
 #include <stdint.h>
 
 #include "motor.h"
+#include "pwm.h"
 
 /**
  * @brief      Class for a DC-motor. Inherits and implements the virtual
@@ -11,6 +12,8 @@
  */
 class DC_Motor : public Motor {
 private:
+
+	PWM pwm;
 
 	/**
 	 * The speed of the motor.

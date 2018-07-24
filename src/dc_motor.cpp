@@ -3,6 +3,7 @@
 DC_Motor::DC_Motor() {
 	speed = 0;
 	direction = 0;
+	pwm = PWM();
 }
 
 void DC_Motor::setSpeed(uint8_t speed) {
