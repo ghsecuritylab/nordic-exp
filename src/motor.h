@@ -10,15 +10,15 @@ enum {
 };
 
 class Motor {
-	private:
-		bool enabled;
+private:
+	bool enabled;
 
-	public:
-		Motor();
-		void enable();
-		void disable();
-		virtual void setSpeed(uint8_t speed) = 0;
-		virtual void setDirection(uint8_t direction) = 0;
+public:
+	Motor();
+	void enable();
+	void disable();
+	virtual void setSpeed(uint8_t speed) = 0;
+	virtual void setDirection(uint8_t direction) = 0;
 };
 
 #endif

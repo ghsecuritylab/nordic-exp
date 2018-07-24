@@ -6,10 +6,10 @@
 #include "motor.h"
 
 class ServoMotor : public Motor {
-  private:
+private:
 	uint8_t speed;
 
-  public:
+public:
 	void setSpeed(uint8_t speed);
 };
 

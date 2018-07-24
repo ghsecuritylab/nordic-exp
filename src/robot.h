@@ -4,11 +4,11 @@
 #include "motor_controller.h"
 
 class Robot {
-	private:
-		MotorController motorController;
+private:
+	MotorController motorController;
 
-	public:
-		Robot();
+public:
+	Robot();
 };
 
 #endif

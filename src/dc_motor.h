@@ -6,14 +6,14 @@
 #include "motor.h"
 
 class DC_Motor : public Motor {
-  private:
+private:
 	uint8_t speed;
 	uint8_t direction;
 
-  public:
+public:
 	DC_Motor();
 	void setSpeed(uint8_t speed);
-    void setDirection(uint8_t direction);
+	void setDirection(uint8_t direction);
 };
 
 #endif

@@ -4,11 +4,11 @@
 #include "dc_motor.h"
 
 class MotorController {
-  private:
+private:
 	DC_Motor leftMotor;
 	DC_Motor rightMotor;
 
-  public:
+public:
 	MotorController();
 };
 
