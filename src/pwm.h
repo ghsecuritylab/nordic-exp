@@ -7,14 +7,19 @@
 
 class PWM {
 private:
-	nrf_drv_pwm_t m_pwm0;
-	nrf_drv_pwm_config_t config;
+	nrf_drv_pwm_t 			m_pwm0;
+	nrf_drv_pwm_config_t 	config;
 	nrf_pwm_values_common_t seq_values[]; // Implement
-	nrf_pwm_sequence_t seq;					// Implement
+	nrf_pwm_sequence_t 		seq;					// Implement
+
+	void setConfig();
 
 public:
 	PWM();
+	//PWM(uint8_t pin);
 	void setPercentage(uint8_t val);
 };
+
+
 
 #endif

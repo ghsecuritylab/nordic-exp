@@ -2,12 +2,9 @@
 
 #include "bsp.h"
 
-PWM::PWM() {
-
-	// Create PWM instance
-	m_pwm0 = NRF_DRV_PWM_INSTANCE(0);
-
+void PWM::setConfig() {
 	// Set default config parameters. Defaults to output on LED_0 using channel 0.
+	//config.output_pins[0] = BSP_LED_0 | NRF_DRV_PWM_PIN_INVERTED; // channel 0
 	config.output_pins[0] = BSP_LED_0 | NRF_DRV_PWM_PIN_INVERTED; // channel 0
 	config.output_pins[1] = NRF_DRV_PWM_PIN_NOT_USED;             // channel 1
     config.output_pins[2] = NRF_DRV_PWM_PIN_NOT_USED;             // channel 2
@@ -19,6 +16,12 @@ PWM::PWM() {
     config.top_value    = 1000;
     config.load_mode    = NRF_PWM_LOAD_COMMON;
     config.step_mode    = NRF_PWM_STEP_AUTO;
+}
+
+PWM::PWM() {
+
+	// Create PWM instance
+	m_pwm0 = NRF_DRV_PWM_INSTANCE(0);
 
     // Initialize
     uint32_t err_code;
@@ -27,4 +30,13 @@ PWM::PWM() {
     if (err_code != NRF_SUCCESS) {
     	// Initialization failed. Take recovery action.
 	}
+
+	// Set default sequence values
+	seq_values[0] = 0;
+
+	seq.values.p_common 	= seq_values;
+	seq.values.length       = NRF_PWM_VALUES_LENGTH(seq_values);
+    seq.values.repeats      = 0;
+    seq.values.end_delay    = 0;
+
 }
