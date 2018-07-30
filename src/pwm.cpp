@@ -34,9 +34,29 @@ PWM::PWM() {
 	// Set default sequence values
 	seq_values[0] = 0;
 
-	seq.values.p_common 	= seq_values;
-	seq.values.length       = NRF_PWM_VALUES_LENGTH(seq_values);
-    seq.values.repeats      = 0;
-    seq.values.end_delay    = 0;
+	seq.values.p_common = seq_values;
+	seq.length       	= NRF_PWM_VALUES_LENGTH(seq_values);
+    seq.repeats      	= 0;
+    seq.end_delay    	= 0;
 
+}
+
+PWM::~PWM() {
+	// Uninitialize PWM instance
+	nrf_drv_pwm_uninit(&m_pwm0);
+}
+
+// for testing
+void PWM::setDutyCycle(uint16_t dutyCycle) {
+	seq_values[1] = dutyCycle;
+}
+
+void PWM::start() {
+	// Starts simple playback in a loop
+	nrf_drv_pwm_simple_playback(&m_pwm0, &seq, 3, NRF_DRV_PWM_FLAG_LOOP);
+}
+
+void PWM::stop() {
+	// Stops the simple playback, does not wait for it to finish
+	nrf_drv_pwm_stop(&m_pwm0, false);
 }
