@@ -27,9 +27,11 @@ public:
 
 
 	// testing
+	/*
 	void moveForward() {
 		motorController.moveForward();
 	}
+	*/
 };
 
 #endif // ROBOT_H

@@ -223,7 +223,7 @@ static void demo5(void)
 void motorPWM() {
 	nrf_drv_pwm_config_t /*const*/ config;
 
-	config.output_pins[0] = PWM_PIN;								// channel 0
+	config.output_pins[0] = PWM_PIN; //| NRF_DRV_PWM_PIN_INVERTED;	// channel 0
 	config.output_pins[1] = NRF_DRV_PWM_PIN_NOT_USED;             // channel 1
     config.output_pins[2] = NRF_DRV_PWM_PIN_NOT_USED;             // channel 2
     config.output_pins[3] = NRF_DRV_PWM_PIN_NOT_USED;             // channel 3
@@ -237,8 +237,8 @@ void motorPWM() {
 
     APP_ERROR_CHECK(nrf_drv_pwm_init(&m_pwm0, &config, NULL));
 
-    static nrf_pwm_values_common_t /*const*/ seq_values[1];
-    seq_values[0] = 500;
+    nrf_pwm_values_common_t /*const*/ seq_values[1];
+    seq_values[0] = 100;
 
     nrf_pwm_sequence_t /*const*/ seq;
 	seq.values.p_common = seq_values;

@@ -14,7 +14,7 @@
 class DC_Motor : public Motor {
 private:
 
-	PWM pwm;
+	//PWM pwm;
 
 	/**
 	 * The speed of the motor.

@@ -14,7 +14,7 @@ DC_Motor::DC_Motor() {
 	nrf_gpio_pin_clear(MOTOR_PIN_1);
 
 	//direction = Direction::NEUTRAL;
-	pwm = PWM();
+	//pwm = PWM();
 }
 
 DC_Motor::DC_Motor(Side side) {
@@ -25,7 +25,7 @@ DC_Motor::DC_Motor(Side side) {
 void DC_Motor::setSpeed(uint8_t speed) {
 	this->speed = speed;
 
-	pwm.setDutyCycle(speed * 10); // test
+	//pwm.setDutyCycle(speed * 10); // test
 }
 
 void DC_Motor::setDirection(Direction dir) {
