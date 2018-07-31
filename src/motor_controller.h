@@ -2,6 +2,9 @@
 #define MOTOR_CONTROLLER_H
 
 #include "dc_motor.h"
+#include "defines.h"
+
+
 
 /**
  * @brief      Provides control functionality for the contained motor objects.
@@ -17,7 +20,7 @@ private:
 	/**
 	 * The motor for the right wheel.
 	 */
-	DC_Motor rightMotor;
+	//DC_Motor rightMotor;
 
 public:
 
@@ -25,6 +28,14 @@ public:
 	 * @brief      Default constructor.
 	 */
 	MotorController();
+
+	/**
+	 * @brief      Sets the speed of the left and right motors to a
+	 *             percentage-value.
+	 */
+	void moveForward();
+
+	void stop();
 };
 
-#endif
+#endif // MOTOR_CONTROLLER_H

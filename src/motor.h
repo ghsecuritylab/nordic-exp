@@ -3,11 +3,7 @@
 
 #include <stdint.h>
 
-enum {
-	FORWARD,
-	BACKWARDS,
-	NEUTRAL
-};
+#include "defines.h"
 
 /**
  * @brief      Abstract class which contains some properties that exist for all
@@ -17,10 +13,12 @@ enum {
 class Motor {
 private:
 
+	Side side;
+
 	/**
 	 * Says if a motor is enabled or not.
 	 */
-	bool enabled;
+	//bool enabled;
 
 public:
 
@@ -29,15 +27,17 @@ public:
 	 */
 	Motor();
 
+	//Motor(Side side);
+
 	/**
 	 * @brief      Sets enabled to "true".
 	 */
-	void enable();
+	//void enable();
 
 	/**
 	 * @brief      Sets enabled to "false".
 	 */
-	void disable();
+	//void disable();
 
 	/**
 	 * @brief      Sets the rotation speed of the motor. Specific to each motor
@@ -53,7 +53,7 @@ public:
 	 *
 	 * @param[in]  direction  The direction
 	 */
-	virtual void setDirection(uint8_t direction) = 0;
+	virtual void setDirection(Direction dir) = 0;
 };
 
-#endif
+#endif // MOTOR_H

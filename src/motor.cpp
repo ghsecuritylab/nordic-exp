@@ -1,13 +1,23 @@
 #include "motor.h"
 
 Motor::Motor() {
-  enabled = false;
+	//enabled = false;
+	side = Side::UNKNOWN;
 }
 
+/*
+Motor::Motor(Motor::Side side) {
+	enabled = false;
+	this->side = side;
+}
+*/
+
+/*
 void Motor::enable() {
-  enabled = true;
+	enabled = true;
 }
 
 void Motor::disable() {
-  enabled = false;
+	enabled = false;
 }
+*/

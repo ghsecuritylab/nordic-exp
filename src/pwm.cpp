@@ -1,11 +1,12 @@
 #include "pwm.h"
 
+#include "defines.h"
 #include "bsp.h"
 
 void PWM::setConfig() {
 	// Set default config parameters. Defaults to output on LED_0 using channel 0.
 	//config.output_pins[0] = BSP_LED_0 | NRF_DRV_PWM_PIN_INVERTED; // channel 0
-	config.output_pins[0] = BSP_LED_0 | NRF_DRV_PWM_PIN_INVERTED; // channel 0
+	config.output_pins[0] = PWM_PIN;								// channel 0
 	config.output_pins[1] = NRF_DRV_PWM_PIN_NOT_USED;             // channel 1
     config.output_pins[2] = NRF_DRV_PWM_PIN_NOT_USED;             // channel 2
     config.output_pins[3] = NRF_DRV_PWM_PIN_NOT_USED;             // channel 3
@@ -22,6 +23,9 @@ PWM::PWM() {
 
 	// Create PWM instance
 	m_pwm0 = NRF_DRV_PWM_INSTANCE(0);
+
+	// Set config using the argument as output pin
+	setConfig();
 
     // Initialize
     uint32_t err_code;

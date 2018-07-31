@@ -4,6 +4,7 @@
 #include <stdint.h>
 
 #include "motor.h"
+#include "defines.h"
 #include "pwm.h"
 
 /**
@@ -23,7 +24,7 @@ private:
 	/**
 	 * The direction of the motor.
 	 */
-	uint8_t direction;
+	//Direction direction;
 
 public:
 
@@ -31,6 +32,9 @@ public:
 	 * Default constructor.
 	 */
 	DC_Motor();
+
+	DC_Motor(Side);
+
 
 	/**
 	 * @brief      Sets the speed of the motor. Implements virtual function.
@@ -44,7 +48,7 @@ public:
 	 *
 	 * @param[in]  direction  The direction
 	 */
-	void setDirection(uint8_t direction);
+	void setDirection(Direction dir);
 };
 
-#endif
+#endif // DC_MOTOR_H

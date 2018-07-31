@@ -24,6 +24,12 @@ public:
 	 * @brief      Default constructor.
 	 */
 	Robot();
+
+
+	// testing
+	void moveForward() {
+		motorController.moveForward();
+	}
 };
 
-#endif
+#endif // ROBOT_H
