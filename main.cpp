@@ -223,22 +223,22 @@ static void demo5(void)
 void motorPWM() {
 	nrf_drv_pwm_config_t /*const*/ config;
 
-	config.output_pins[0] = PWM_PIN; //| NRF_DRV_PWM_PIN_INVERTED;	// channel 0
+	config.output_pins[0] = PWM_PIN | NRF_DRV_PWM_PIN_INVERTED;	// channel 0
 	config.output_pins[1] = NRF_DRV_PWM_PIN_NOT_USED;             // channel 1
     config.output_pins[2] = NRF_DRV_PWM_PIN_NOT_USED;             // channel 2
     config.output_pins[3] = NRF_DRV_PWM_PIN_NOT_USED;             // channel 3
 
     config.irq_priority = APP_IRQ_PRIORITY_LOW;
-    config.base_clock   = NRF_PWM_CLK_1MHz;
+    config.base_clock   = NRF_PWM_CLK_2MHz;
     config.count_mode   = NRF_PWM_MODE_UP;
-    config.top_value    = 1000;
+    config.top_value    = 100; // 20kHZ
     config.load_mode    = NRF_PWM_LOAD_COMMON;
     config.step_mode    = NRF_PWM_STEP_AUTO;
 
     APP_ERROR_CHECK(nrf_drv_pwm_init(&m_pwm0, &config, NULL));
 
     nrf_pwm_values_common_t /*const*/ seq_values[1];
-    seq_values[0] = 100;
+    seq_values[0] = 50; // 50 %
 
     nrf_pwm_sequence_t /*const*/ seq;
 	seq.values.p_common = seq_values;
