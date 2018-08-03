@@ -87,7 +87,7 @@ void motorPWM() {
 
     APP_ERROR_CHECK(nrf_drv_pwm_init(&m_pwm0, &config, NULL));
 
-    static nrf_pwm_values_individual_t /*const*/ values;
+    nrf_pwm_values_individual_t /*const*/ values;
     values.channel_0 = 0 | 0x8000;
     values.channel_1 = 0 | 0x8000;
     values.channel_2 = 0 | 0x8000;

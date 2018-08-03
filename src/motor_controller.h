@@ -2,6 +2,7 @@
 #define MOTOR_CONTROLLER_H
 
 #include "dc_motor.h"
+#include "pwm.h"
 #include "defines.h"
 
 
@@ -11,6 +12,12 @@
  */
 class MotorController {
 private:
+
+	/**
+	 * Common instance of PWM-driver shared between the motors. Each motor is
+	 * given one channel.
+	 */
+	PWM pwm;
 
 	/**
 	 * The motor for the left wheel.
