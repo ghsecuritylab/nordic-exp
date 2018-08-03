@@ -223,7 +223,7 @@ static void demo5(void)
 void motorPWM() {
 	nrf_drv_pwm_config_t /*const*/ config;
 
-	config.output_pins[0] = PWM_PIN | NRF_DRV_PWM_PIN_INVERTED;	// channel 0
+	config.output_pins[0] = PWM_PIN;// | NRF_DRV_PWM_PIN_INVERTED;	// channel 0
 	config.output_pins[1] = NRF_DRV_PWM_PIN_NOT_USED;             // channel 1
     config.output_pins[2] = NRF_DRV_PWM_PIN_NOT_USED;             // channel 2
     config.output_pins[3] = NRF_DRV_PWM_PIN_NOT_USED;             // channel 3
@@ -232,21 +232,37 @@ void motorPWM() {
     config.base_clock   = NRF_PWM_CLK_2MHz;
     config.count_mode   = NRF_PWM_MODE_UP;
     config.top_value    = 100; // 20kHZ
-    config.load_mode    = NRF_PWM_LOAD_COMMON;
+    config.load_mode    = NRF_PWM_LOAD_INDIVIDUAL;
     config.step_mode    = NRF_PWM_STEP_AUTO;
 
     APP_ERROR_CHECK(nrf_drv_pwm_init(&m_pwm0, &config, NULL));
 
-    nrf_pwm_values_common_t /*const*/ seq_values[1];
-    seq_values[0] = 50; // 50 %
+    static nrf_pwm_values_individual_t /*const*/ values;
+    values.channel_0 = 0 | 0x8000;
+    values.channel_1 = 0 | 0x8000;
+    values.channel_2 = 0 | 0x8000;
+    values.channel_3 = 0 | 0x8000;
 
     nrf_pwm_sequence_t /*const*/ seq;
-	seq.values.p_common = seq_values;
-	seq.length       	= NRF_PWM_VALUES_LENGTH(seq_values);
+	seq.values.p_individual = &values;
+	seq.length       	= NRF_PWM_VALUES_LENGTH(values);
     seq.repeats      	= 0;
     seq.end_delay    	= 0;
 
     nrf_drv_pwm_simple_playback(&m_pwm0, &seq, 1, NRF_DRV_PWM_FLAG_LOOP);
+
+    // value change test
+    values.channel_0 = 10 | 0x8000;
+    values.channel_0 = 20 | 0x8000;
+    values.channel_0 = 30 | 0x8000;
+    values.channel_0 = 40 | 0x8000;
+    values.channel_0 = 50 | 0x8000;
+    values.channel_0 = 60 | 0x8000;
+    values.channel_0 = 70 | 0x8000;
+    values.channel_0 = 80 | 0x8000;
+    values.channel_0 = 90 | 0x8000;
+    values.channel_0 = 100 | 0x8000;
+    
 }
 
 /*
@@ -342,13 +358,16 @@ int main(void)
     // button 1 or button 2 (see the 'bsp_evt_handler' function).
     //demo5();
     
+    //nrf_gpio_cfg_output(PWM_PIN);
     nrf_gpio_cfg_output(MOTOR_PIN_0);
 	nrf_gpio_cfg_output(MOTOR_PIN_1);
 
 	// Set both pins low, motor is stopped
+	//nrf_gpio_pin_clear(PWM_PIN);
 	nrf_gpio_pin_clear(MOTOR_PIN_0);
 	nrf_gpio_pin_clear(MOTOR_PIN_1);
 
+	// Set direction
 	nrf_gpio_pin_set(MOTOR_PIN_0);
 
     motorPWM();
