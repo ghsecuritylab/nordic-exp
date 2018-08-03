@@ -14,8 +14,6 @@
 class DC_Motor : public Motor {
 private:
 
-	//PWM pwm;
-
 	/**
 	 * The speed of the motor.
 	 */
@@ -24,7 +22,7 @@ private:
 	/**
 	 * The direction of the motor.
 	 */
-	//Direction direction;
+	Direction direction;
 
 public:
 
@@ -32,8 +30,8 @@ public:
 	 * Default constructor.
 	 */
 	DC_Motor();
-
-	DC_Motor(Side);
+	DC_Motor(uint16_t *dutyCyclePtr);
+	DC_Motor(Side side);
 
 
 	/**

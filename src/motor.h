@@ -14,11 +14,12 @@ class Motor {
 private:
 
 	Side side;
+	uint16_t *dutyCyclePtr;
 
 	/**
 	 * Says if a motor is enabled or not.
 	 */
-	//bool enabled;
+	bool enabled;
 
 public:
 
@@ -26,8 +27,8 @@ public:
 	 * @brief      Default constructor.
 	 */
 	Motor();
-
-	//Motor(Side side);
+	Motor(Side side);
+	Motor(uint16_t *dutyCyclePtr);
 
 	/**
 	 * @brief      Sets enabled to "true".

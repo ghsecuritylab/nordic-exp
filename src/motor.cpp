@@ -1,16 +1,22 @@
 #include "motor.h"
 
 Motor::Motor() {
-	//enabled = false;
+	enabled = false;
 	side = Side::UNKNOWN;
+	dutyCyclePtr = nullptr;
 }
 
-/*
-Motor::Motor(Motor::Side side) {
+Motor::Motor(Side side) {
 	enabled = false;
 	this->side = side;
+	dutyCyclePtr = nullptr;
 }
-*/
+
+Motor::Motor(uint16_t *dutyCyclePtr) {
+	enabled = false;
+	side = Side::UNKNOWN;
+	this->dutyCyclePtr = dutyCyclePtr;
+}
 
 /*
 void Motor::enable() {

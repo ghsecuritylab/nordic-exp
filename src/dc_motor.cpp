@@ -4,6 +4,7 @@
 
 DC_Motor::DC_Motor() {
 	speed = 0;
+	direction = Direction::NEUTRAL;
 
 	// Initialize driver pins to be output
 	nrf_gpio_cfg_output(MOTOR_PIN_0);
@@ -12,14 +13,24 @@ DC_Motor::DC_Motor() {
 	// Set both pins low, motor is stopped
 	nrf_gpio_pin_clear(MOTOR_PIN_0);
 	nrf_gpio_pin_clear(MOTOR_PIN_1);
-
-	//direction = Direction::NEUTRAL;
-	//pwm = PWM();
 }
 
-DC_Motor::DC_Motor(Side side) {
-	// Kludged to left side for testing
+DC_Motor::DC_Motor(Side side) : Motor(side) {
 	DC_Motor();
+	switch (side) {
+		case Side::LEFT:
+			setDirection(Direction::FORWARD);
+			break;
+		case Side::RIGHT:
+			setDirection(Direction::BACKWARDS);
+			break;
+		default:
+			break;
+	}
+}
+
+DC_Motor::DC_Motor(uint16_t *dutyCyclePtr) : Motor(dutyCyclePtr) {
+
 }
 
 void DC_Motor::setSpeed(uint8_t speed) {
