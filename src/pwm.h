@@ -12,23 +12,27 @@
 #include <stdint.h>
 
 #include "nrf_drv_pwm.h"
+#include "defines.h"
 
 class PWM {
 private:
+	const uint32_t PIN_NUMBER = PWM_PIN_1;
+	// Constant pointer to a changeable uint16_t
+	uint16_t *const VALUE;
+
 	nrf_drv_pwm_t 				m_pwm0;
 	nrf_drv_pwm_config_t 		config;
-	nrf_pwm_values_individual_t values;
 	nrf_pwm_sequence_t 			seq;
 
 	void setConfig();
 
 public:
-	PWM();
+	PWM(uint16_t *const initialVal);
 	~PWM();
-	//void setPeriod(uint16_t period);
-	//void setDutyCycle(uint16_t dutyCycle);
-	void start();
-	void stop();
+
+	inline void setValue(uint16_t val);
+	inline void play();
+	inline void stop();
 };
 
 

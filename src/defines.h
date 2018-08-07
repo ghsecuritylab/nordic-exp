@@ -1,7 +1,7 @@
 #ifndef DEFINES_H
 #define DEFINES_H
 
-#define PWM_PIN			11
+#define PWM_PIN_1			11
 #define MOTOR_PIN_0		12
 #define MOTOR_PIN_1		13
 

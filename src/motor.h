@@ -9,8 +9,7 @@
 class Motor {
 private:
 
-	//Side side;
-	//bool enabled;
+	
 
 public:
 

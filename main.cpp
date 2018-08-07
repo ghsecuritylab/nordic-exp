@@ -67,11 +67,12 @@ extern "C" {
 #include "robot.h"
 #include "defines.h"
 
+/*
 static nrf_drv_pwm_t m_pwm0 = NRF_DRV_PWM_INSTANCE(0);
 
 
 void motorPWM() {
-	nrf_drv_pwm_config_t /*const*/ config;
+	nrf_drv_pwm_config_t /*const*/ /*config;
 
 	config.output_pins[0] = PWM_PIN;// | NRF_DRV_PWM_PIN_INVERTED;	// channel 0
 	config.output_pins[1] = NRF_DRV_PWM_PIN_NOT_USED;             // channel 1
@@ -82,20 +83,22 @@ void motorPWM() {
     config.base_clock   = NRF_PWM_CLK_2MHz;
     config.count_mode   = NRF_PWM_MODE_UP;
     config.top_value    = 100; // 20kHZ
-    config.load_mode    = NRF_PWM_LOAD_INDIVIDUAL;
+    config.load_mode    = NRF_PWM_LOAD_COMMON;
     config.step_mode    = NRF_PWM_STEP_AUTO;
 
     APP_ERROR_CHECK(nrf_drv_pwm_init(&m_pwm0, &config, NULL));
 
-    nrf_pwm_values_individual_t /*const*/ values;
+    /*
+    nrf_pwm_values_individual_t /*const*/ /*values;
     values.channel_0 = 0 | 0x8000;
     values.channel_1 = 0 | 0x8000;
     values.channel_2 = 0 | 0x8000;
     values.channel_3 = 0 | 0x8000;
-
-    nrf_pwm_sequence_t /*const*/ seq;
-	seq.values.p_individual = &values;
-	seq.length       	= NRF_PWM_VALUES_LENGTH(values);
+    */
+/*
+    nrf_pwm_sequence_t /*const*/ /*seq;
+	seq.values.common = VALUE;
+	seq.length       	= NRF_PWM_VALUES_LENGTH(VALUE);
     seq.repeats      	= 0;
     seq.end_delay    	= 0;
 
@@ -114,7 +117,7 @@ void motorPWM() {
     values.channel_0 = 100 | 0x8000;
     
 }
-
+*/
 /*
 static void bsp_evt_handler(bsp_event_t evt)
 {
@@ -220,10 +223,10 @@ int main(void)
 	// Set direction
 	nrf_gpio_pin_set(MOTOR_PIN_0);
 
-    motorPWM();
+    //motorPWM();
 
     // Robot test begin
-    Robot testRobot;
+    //Robot testRobot;
     // Robot test end
 
     for (;;)
