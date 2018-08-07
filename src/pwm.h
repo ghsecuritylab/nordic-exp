@@ -15,10 +15,10 @@
 
 class PWM {
 private:
-	nrf_drv_pwm_t m_pwm0;
-	nrf_drv_pwm_config_t config;
+	nrf_drv_pwm_t 				m_pwm0;
+	nrf_drv_pwm_config_t 		config;
 	nrf_pwm_values_individual_t values;
-	nrf_pwm_sequence_t seq;
+	nrf_pwm_sequence_t 			seq;
 
 	void setConfig();
 

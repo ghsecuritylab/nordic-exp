@@ -98,11 +98,7 @@
       <file file_name="./main.cpp" />
       <file file_name="./src/robot.cpp" />
       <file file_name="./src/motor_controller.cpp" />
-      <file file_name="./src/dc_motor.cpp" />
       <file file_name="./src/motor.cpp" />
-      <file file_name="./src/servo_motor.cpp">
-        <configuration Name="Debug" build_exclude_from_build="Yes" />
-      </file>
       <file file_name="src/pwm.cpp" />
     </folder>
     <folder Name="nRF_Segger_RTT">
