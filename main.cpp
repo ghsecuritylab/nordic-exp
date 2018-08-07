@@ -64,8 +64,11 @@ extern "C" {
 	#include "nrf_log_default_backends.h"
 }
 
+#include <stdint.h>
+
 #include "robot.h"
 #include "defines.h"
+#include "pwm.h"
 
 /*
 static nrf_drv_pwm_t m_pwm0 = NRF_DRV_PWM_INSTANCE(0);
@@ -197,7 +200,6 @@ void app_error_fault_handler(uint32_t id, uint32_t pc, uint32_t info)
 }
 
 
-
 int main(void)
 {
     APP_ERROR_CHECK(NRF_LOG_INIT(NULL));
@@ -226,7 +228,17 @@ int main(void)
     //motorPWM();
 
     // Robot test begin
-    //Robot testRobot;
+    uint16_t val = 0x8000;
+	PWM pwmTest = PWM(&val);
+	pwmTest.play();
+	pwmTest.setValue(10);
+	pwmTest.setValue(30);
+	pwmTest.setValue(40);
+	pwmTest.setValue(60);
+	pwmTest.setValue(80);
+	pwmTest.setValue(100);
+	pwmTest.setValue(110);
+	pwmTest.stop();
     // Robot test end
 
     for (;;)
