@@ -17,16 +17,16 @@ void Motor::initPins() {
 
 	// Set pins to output
 	//nrf_gpio_cfg_output(PWM_PIN);
-    nrf_gpio_cfg_output(MOTOR_PIN_0);
-	nrf_gpio_cfg_output(MOTOR_PIN_1);
+    nrf_gpio_cfg_output(INPUT_PIN_1);
+	nrf_gpio_cfg_output(INPUT_PIN_2);
 
 	// Set both pins low, motor is stopped
 	//nrf_gpio_pin_clear(PWM_PIN);
-	nrf_gpio_pin_clear(MOTOR_PIN_0);
-	nrf_gpio_pin_clear(MOTOR_PIN_1);
+	nrf_gpio_pin_clear(INPUT_PIN_1);
+	nrf_gpio_pin_clear(INPUT_PIN_2);
 
 	// Set direction
-	//nrf_gpio_pin_set(MOTOR_PIN_0);
+	//nrf_gpio_pin_set(INPUT_PIN_1);
 }
 
 void Motor::setSpeed(uint8_t speed) {
@@ -44,4 +44,25 @@ uint8_t Motor::getSpeed() const {
 	// Clear the MSB in case the PWM cycle has the wrong polarity
 	value &= ~0x8000;
 	return (uint8_t) value;
+}
+
+void Motor::setDirection(Direction dir) {
+	if (dir == Direction::FORWARD) {
+		if (loc == Location::LEFT) {
+			nrf_gpio_pin_set(INPUT_PIN_1);
+			nrf_gpio_pin_clear(INPUT_PIN_2);
+		} else if (loc == Location::RIGHT) {
+			nrf_gpio_pin_clear(INPUT_PIN_1);
+			nrf_gpio_pin_set(INPUT_PIN_2);
+		}
+
+	} else if (dir == Direction::BACKWARDS) {
+		if (loc == Location::LEFT) {
+			nrf_gpio_pin_clear(INPUT_PIN_1);
+			nrf_gpio_pin_set(INPUT_PIN_2);
+		} else if (loc == Location::RIGHT) {
+			nrf_gpio_pin_set(INPUT_PIN_1);
+			nrf_gpio_pin_clear(INPUT_PIN_2);
+		}
+	}
 }

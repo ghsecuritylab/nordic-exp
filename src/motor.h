@@ -28,7 +28,7 @@ public:
 
 	void setSpeed(uint8_t speed);
 	uint8_t getSpeed() const;
-	//void setDirection(Direction dir);
+	void setDirection(Direction dir);
 };
 
 #endif // MOTOR_H
