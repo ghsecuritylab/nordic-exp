@@ -212,18 +212,7 @@ int main(void)
     // Start with Demo 1, then switch to another one when the user presses
     // button 1 or button 2 (see the 'bsp_evt_handler' function).
     //demo5();
-    
-    //nrf_gpio_cfg_output(PWM_PIN);
-    nrf_gpio_cfg_output(MOTOR_PIN_0);
-	nrf_gpio_cfg_output(MOTOR_PIN_1);
 
-	// Set both pins low, motor is stopped
-	//nrf_gpio_pin_clear(PWM_PIN);
-	nrf_gpio_pin_clear(MOTOR_PIN_0);
-	nrf_gpio_pin_clear(MOTOR_PIN_1);
-
-	// Set direction
-	nrf_gpio_pin_set(MOTOR_PIN_0);
 
     //motorPWM();
 

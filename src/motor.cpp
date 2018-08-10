@@ -73,5 +73,5 @@ void Motor::fastStop() {
 }
 
 void Motor::coast() {
-	pwm.setSpeed(0);
+	pwm.setValue(0);
 }
