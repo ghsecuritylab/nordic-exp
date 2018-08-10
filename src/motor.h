@@ -16,6 +16,8 @@ private:
 	const uint8_t INPUT_PIN_1;
 	const uint8_t INPUT_PIN_2;
 
+	void initPins();
+
 public:
 
 	Motor();
