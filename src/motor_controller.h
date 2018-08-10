@@ -12,7 +12,7 @@
 class MotorController {
 private:
 	
-	Motor leftMotor;
+	//Motor leftMotor;
 	//Motor rightMotor;
 
 public:

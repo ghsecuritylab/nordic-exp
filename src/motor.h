@@ -4,17 +4,22 @@
 #include <stdint.h>
 
 #include "defines.h"
+#include "pwm.h"
 
 
 class Motor {
 private:
-
 	
+	static uint16_t initialDutyCycle;
+	PWM pwm;
+	const Location loc;
+	const uint8_t INPUT_PIN_1;
+	const uint8_t INPUT_PIN_2;
 
 public:
 
-	//Motor();
-	//Motor(Side side);
+	Motor();
+	Motor(Location loc, uint8_t pin_1, uint8_t pin_2);
 
 	//void enable();
 	//void disable();

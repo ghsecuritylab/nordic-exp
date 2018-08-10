@@ -13,12 +13,16 @@ enum class Direction {
 	NEUTRAL
 };
 
-enum class Side {
+enum class Location {
 	FRONT,
 	REAR,
 	LEFT,
 	RIGHT,
+	MIDDLE,
+	TOP,
+	BELOW,
 	UNKNOWN
 };
+
 
 #endif // DEFINES_H
