@@ -21,10 +21,10 @@ public:
 	Motor();
 	Motor(Location loc, uint8_t pin_1, uint8_t pin_2);
 
-	//void enable();
-	//void disable();
+	void enable() 	{ pwm.play(); }
+	void disable() 	{ pwm.stop(); }
 
-	//void setSpeed(uint8_t speed);
+	void setSpeed(uint8_t speed);
 	//void setDirection(Direction dir);
 };
 
