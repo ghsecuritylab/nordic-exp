@@ -29,6 +29,14 @@ public:
 	void setSpeed(uint8_t speed);
 	uint8_t getSpeed() const;
 	void setDirection(Direction dir);
+	void fastStop();
+
+	/**
+	 * @brief      Sets the PWM pin low. The wheels will run freely, direction
+	 *             pins will be "don't care". Last direction will be kept when
+	 *             re-enabling pwm.
+	 */
+	void coast();
 };
 
 #endif // MOTOR_H

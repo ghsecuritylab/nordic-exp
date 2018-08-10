@@ -66,3 +66,12 @@ void Motor::setDirection(Direction dir) {
 		}
 	}
 }
+
+void Motor::fastStop() {
+	nrf_gpio_pin_clear(INPUT_PIN_1);
+	nrf_gpio_pin_clear(INPUT_PIN_2);
+}
+
+void Motor::coast() {
+	pwm.setSpeed(0);
+}
