@@ -43,9 +43,12 @@ PWM::~PWM() {
 	nrf_drv_pwm_uninit(&m_pwm0);
 }
 
+uint16_t PWM::getValue() const {
+	return *VALUE;
+}
+
 void PWM::setValue(uint16_t val) {
-	// Value must be bitwise or'ed to ensure correct polarity of the signal.
-	*VALUE = val | 0x8000;
+	*VALUE = val;
 }
 
 void PWM::play() {

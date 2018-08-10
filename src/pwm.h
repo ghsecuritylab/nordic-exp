@@ -55,9 +55,16 @@ public:
 	~PWM();
 
 	/**
+	 * @brief      Gets the value of the PWM counter
+	 *
+	 * @return     The value.
+	 */
+	uint16_t getValue() const;
+
+	/**
 	 * @brief      Sets the value of the PWM counter
 	 *
-	 * @param[in]  val   An integer in range [0,100]
+	 * @param[in]  val   
 	 */
 	void setValue(uint16_t val);
 

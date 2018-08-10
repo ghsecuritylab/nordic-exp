@@ -25,6 +25,7 @@ public:
 	void disable() 	{ pwm.stop(); }
 
 	void setSpeed(uint8_t speed);
+	uint8_t getSpeed() const;
 	//void setDirection(Direction dir);
 };
 

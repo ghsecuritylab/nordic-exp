@@ -10,7 +10,16 @@ Motor::Motor() : pwm(&initialDutyCycle), loc(Location::UNKNOWN), INPUT_PIN_1(255
 Motor::Motor(Location loc, uint8_t pin_1, uint8_t pin_2) : pwm(&initialDutyCycle), loc(loc), INPUT_PIN_1(pin_1), INPUT_PIN_2(pin_2) {}
 
 void Motor::setSpeed(uint8_t speed) {
-	// if (pwm play is enabled:)
-	pwm.setValue(speed);
+	if (speed > 100)
+		speed = 100;
+	else if (speed < 0)
+		speed = 0;
+
+	// Value must be bitwise OR'ed to ensure correct polarity of the signal. Move this to pwm class?
+	pwm.setValue(speed | 0x8000);
 }
 
+uint8_t Motor::getSpeed() const {
+	
+	return 0;
+}
