@@ -20,6 +20,8 @@ void Motor::setSpeed(uint8_t speed) {
 }
 
 uint8_t Motor::getSpeed() const {
-	
-	return 0;
+	uint16_t value = pwm.getValue();
+	// Clear the MSB in case the PWM cycle has the wrong polarity
+	value &= ~0x8000;
+	return (uint8_t) value;
 }
